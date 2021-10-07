@@ -35,7 +35,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextStyle labelTextStyle =
-      TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15);
+  TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15);
 
   TextStyle getHintTextStyle(context, hint) {
     return TextStyle(
@@ -44,19 +44,18 @@ class _MyHomePageState extends State<MyHomePage> {
         fontWeight: FontWeight.w900);
   }
 
-  Widget makeForm(
-      {@required String? labelText,
-      @required String? hintText,
-      @required TextEditingController? controller,
-      @required context,
-      List<TextInputFormatter> inputFormatters = const [],
-      Function? onTap,
-      Function? onEditingComplete,
-      TextInputAction textInputAction = TextInputAction.done,
-      bool obscureText = false,
-      bool autofocus = false,
-      bool readonly = false,
-      String Function(String text)? onChanged}) {
+  Widget makeForm({@required String? labelText,
+    @required String? hintText,
+    @required TextEditingController? controller,
+    @required context,
+    List<TextInputFormatter> inputFormatters = const [],
+    Function? onTap,
+    Function? onEditingComplete,
+    TextInputAction textInputAction = TextInputAction.done,
+    bool obscureText = false,
+    bool autofocus = false,
+    bool readonly = false,
+    String Function(String text)? onChanged}) {
     return Padding(
       padding: const EdgeInsets.only(top: 0),
       child: Column(
@@ -139,11 +138,13 @@ class _MyHomePageState extends State<MyHomePage> {
             Column(
               children: [
                 StreamBuilder(
-                  stream: BlocProvider.of<SampleCubit>(context).nameStream,
+                  stream: BlocProvider
+                      .of<SampleCubit>(context)
+                      .nameStream,
                   builder: (context, snapshot) {
                     return Padding(
                       padding:
-                          const EdgeInsets.only(left: 24, right: 24, top: 24),
+                      const EdgeInsets.only(left: 24, right: 24, top: 24),
                       child: Column(
                         children: [
                           makeForm(
@@ -153,13 +154,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               onChanged: (text) {
                                 BlocProvider.of<SampleCubit>(context)
                                     .updateName(text);
-                                return "435252";
+                                return text;
                               }),
                           snapshot.hasError
                               ? getErrorText(snapshot.error.toString())
                               : SizedBox(
-                                  height: 29,
-                                )
+                            height: 29,
+                          )
                         ],
                       ),
                     );
@@ -167,11 +168,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 StreamBuilder(
                   stream:
-                      BlocProvider.of<SampleCubit>(context).phoneNumberStream,
+                  BlocProvider
+                      .of<SampleCubit>(context)
+                      .phoneNumberStream,
                   builder: (context, snapshot) {
                     return Padding(
                       padding:
-                          const EdgeInsets.only(left: 24, right: 24, top: 24),
+                      const EdgeInsets.only(left: 24, right: 24, top: 24),
                       child: Column(
                         children: [
                           makeForm(
@@ -186,8 +189,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           snapshot.hasError
                               ? getErrorText(snapshot.error.toString())
                               : SizedBox(
-                                  height: 29,
-                                )
+                            height: 29,
+                          )
                         ],
                       ),
                     );
@@ -196,7 +199,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             StreamBuilder(
-              stream: BlocProvider.of<SampleCubit>(context).buttonValid,
+              stream: BlocProvider
+                  .of<SampleCubit>(context)
+                  .buttonValid,
               builder: (context, snapshot) {
                 return Padding(
                   padding: const EdgeInsets.all(24),
@@ -210,9 +215,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               borderRadius: BorderRadius.circular(5),
                             ),
                           ),
-                          onPressed: snapshot.hasData ? () {
-                            BlocProvider.of<SampleCubit>(context).onNext();
-                          } : null,
+                          onPressed: snapshot.hasData
+                              ? () =>
+                              BlocProvider.of<SampleCubit>(context).onNext()
+                              : null,
                           child: Text(
                             "Next",
                             style: TextStyle(fontWeight: FontWeight.bold),
@@ -230,3 +236,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
