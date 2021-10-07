@@ -1,4 +1,4 @@
-part of 'dashboard_cubit.dart';
+part of 'sample_cubit.dart';
 
 abstract class CubitState {}
 

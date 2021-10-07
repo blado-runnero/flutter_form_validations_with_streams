@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-part 'dashboard_state.dart';
+part 'sample_state.dart';
 
 class SampleCubit extends Cubit<CubitState> {
   SampleCubit() : super(Initial());

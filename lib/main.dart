@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:form_validation/cubit/dashboard_cubit.dart';
+
+import 'cubit/sample_cubit.dart';
 
 void main() {
   runApp(MyApp());
